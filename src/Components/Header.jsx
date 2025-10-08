@@ -1,3 +1,5 @@
+import Navigate from "./Navigate.jsx";
+
 export default function Header(){
     return(
         <>
@@ -7,10 +9,7 @@ export default function Header(){
                         <h1 style={{marginBottom: '8px'}} >ARMAGGEDON V</h1>
                         <p>Сервис мониторинга и уничтожения астероидов, опасно подлетающих к Земле.</p>
                     </div>
-                    <ul className="nav">
-                        <li>Астероиды</li>
-                        <li style={{textDecorationLine: 'underline'}}>Уничтожение</li>
-                    </ul>
+                        <Navigate/>
                 </div>
             </header>
         </>

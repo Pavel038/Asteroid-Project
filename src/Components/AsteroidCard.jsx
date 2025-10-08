@@ -1,4 +1,4 @@
-import CardInfo from "./CardInfo.jsx";
+import CardInfo from "../CardInfo.jsx";
 import AsteroidColumn from "./AsteroidColumn.jsx";
 import EvaluationColumn from "./EvaluationColumn.jsx";
 

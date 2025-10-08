@@ -1,11 +1,11 @@
 import AsteroidCard from "./AsteroidCard.jsx";
-import Vector1 from "./assets/Vector (1).svg";
-import Vector2 from "./assets/Vector (2).svg";
-import Vector3 from "./assets/Vector (3).svg";
-import Group from "./assets/Group.svg";
-import Group1 from "./assets/Group (1).svg";
-import Group2 from "./assets/Group (2).svg";
-import dino from "./assets/dino.svg";
+import Vector1 from "../assets/Vector (1).svg";
+import Vector2 from "../assets/Vector (2).svg";
+import Vector3 from "../assets/Vector (3).svg";
+import Group from "../assets/Group.svg";
+import Group1 from "../assets/Group (1).svg";
+import Group2 from "../assets/Group (2).svg";
+import dino from "../assets/dino.svg";
 
 
 
