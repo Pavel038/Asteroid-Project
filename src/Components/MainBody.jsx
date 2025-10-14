@@ -11,9 +11,7 @@ export default function MainBody() {
                 </div>
                 <p>Расстояние в километрах, <u>в дистанциях до луны</u></p>
             </div>
-            <div className="cart__container">
-                    <AsteroidData/>
-                </div>
+
         </div>
                 )
                 }

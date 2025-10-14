@@ -1,12 +1,20 @@
-import {Link} from "react-router";
+import {NavLink} from "react-router";
 
 export default function Navigate (){
     return (
-        <>
-            <ul className="nav">
-                <li><Link to="asteroids">Астероиды</Link></li>
-                <li style={{textDecorationLine: 'underline'}}><Link to="destruction">Уничтожение</Link></li>
+        <nav>
+            <ul className='nav'>
+            <NavLink to="/" end >
+                {({isActive})=>(
+                <li className={isActive && "nav-link-active" }>Астероид</li>
+                )}
+            </NavLink>
+                <NavLink to="/destruction"  >
+                    {({isActive})=>(
+                        <li className={isActive && "nav-link-active" }>Разрушить</li>
+                    )}
+                </NavLink>
             </ul>
-        </>
+        </nav>
     )
 }

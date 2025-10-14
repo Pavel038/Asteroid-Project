@@ -161,3 +161,6 @@ body{
     text-align: center;
     margin-top: 56px;
 }
+.nav-link-active{
+    background-color: #7DE88C;
+}
