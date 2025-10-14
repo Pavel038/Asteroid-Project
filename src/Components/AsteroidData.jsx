@@ -10,7 +10,7 @@ export default function AsteroidData(){
 
     useEffect(() => {
 
-        fetch("https://api.nasa.gov/neo/rest/v1/feed")
+        fetch("https://jsonplaceholder.typicode.com/")
             .then(res => res.json())
             .then(json => console.log(json))
     }, []);
