@@ -1,7 +1,11 @@
-export default function AsteroidsPage(){
+import AsteroidCard from "../Components/AsteroidCard.jsx";
+
+export default function AsteroidsPage({dataAsteroid}) {
+console.log(dataAsteroid);
     return (
         <>
-        <h1>Привет</h1>
+            {dataAsteroid.map(asteroid=>asteroid.map(elem=> <AsteroidCard key = {elem.id} element={elem}/>))}
+
         </>
     )
 }

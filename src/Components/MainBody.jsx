@@ -1,5 +1,5 @@
 
-import AsteroidData from "./AsteroidData.jsx";
+import AsteroidData from "../AsteroidData.jsx";
 
 export default function MainBody() {
     return (
