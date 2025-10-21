@@ -70,14 +70,14 @@ body{
     bottom: 0;
 }
 
-.group1{
+.group{
     position: absolute;
     top: 0;
-    right: 31.7%;
+    right: 31%;
 
 }
 
-.vector1{
+.vector{
     position: absolute;
     right: 30%;
 }

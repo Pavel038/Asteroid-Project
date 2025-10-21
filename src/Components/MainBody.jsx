@@ -1,7 +1,8 @@
 
-import AsteroidData from "../AsteroidData.jsx";
 
-export default function MainBody() {
+import AsteroidCard from "./AsteroidCard.jsx";
+
+export default function MainBody({destructionList}) {
     return (
         <div className="main__container">
             <div className="main__container__head">
@@ -11,7 +12,8 @@ export default function MainBody() {
                 </div>
                 <p>Расстояние в километрах, <u>в дистанциях до луны</u></p>
             </div>
-
+            {destructionList.map(destruction => <AsteroidCard key={destruction.id} element={destruction} showDestructionButton={false}/>
+            )}
         </div>
                 )
                 }

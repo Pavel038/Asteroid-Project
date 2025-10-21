@@ -1,12 +1,12 @@
-export default function AsteroidColumn({dino, vector, group, id}) {
+export default function AsteroidColumn({dino, vector, group}) {
 
 
 
     return (
         <>
-            <div className={`asteroid`}>
-                <img className={`vector${id}`} src={vector} alt=""/>
-                <img className={`group${id}`} src={group} alt=""/>
+            <div className= 'asteroid'>
+                <img className='vector' src={vector} alt=""/>
+                <img className='group' src={group} alt=""/>
             </div>
             <div className="dino">
                 <img src={dino} alt=""/>
