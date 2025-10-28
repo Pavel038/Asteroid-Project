@@ -1,8 +1,11 @@
 
 
 import AsteroidCard from "./AsteroidCard.jsx";
+import {useContext} from "react";
+import {TasksContext} from "../TasksContext.js";
 
-export default function MainBody({destructionList}) {
+export default function MainBody() {
+    const {destructionList} = useContext(TasksContext)
     return (
         <div className="main__container">
             <div className="main__container__head">

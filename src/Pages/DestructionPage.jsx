@@ -2,11 +2,11 @@ import AsteroidData from "../AsteroidData.jsx";
 import MainBody from "../Components/MainBody.jsx";
 import Footer from "../Components/Footer.jsx";
 
-export default function DestructionPage({destructionList}){
+export default function DestructionPage(){
  return (
      <>
          <div className="container">
-             <MainBody destructionList={destructionList} />
+             <MainBody />
              <div className="cart__container">
 
              </div>

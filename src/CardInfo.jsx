@@ -1,4 +1,11 @@
+
+
+
 export default function CardInfo({name, date, distance, size}) {
+
+
+
+
     return (
         <>
             <div className="card_info">
@@ -12,12 +19,12 @@ export default function CardInfo({name, date, distance, size}) {
                 <div className="date">
                     <p>Расстояние</p>
                     <div className="line"></div>
-                    <p>{distance}</p>
+                    <p>{distance} км</p>
                 </div>
                 <div className="date">
                     <p>Размер</p>
                     <div className="line"></div>
-                    <p>{size}</p>
+                    <p>{size} м</p>
                 </div>
             </div>
         </>
