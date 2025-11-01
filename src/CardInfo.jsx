@@ -1,10 +1,14 @@
+import {useContext, useMemo} from "react";
+import {DistanceContext} from "./TasksContext.js";
 
 
+export default function CardInfo({name, date, distanceInKm, size, distanceInLunarOrbits}) {
 
-export default function CardInfo({name, date, distance, size}) {
+    const {distanceUnit} = useContext(DistanceContext)
 
-
-
+    const displayDistance = useMemo(() => {
+        return distanceUnit.isKilometers ? distanceInKm : distanceInLunarOrbits;
+    }, [distanceUnit.isKilometers]);
 
     return (
         <>
@@ -19,7 +23,7 @@ export default function CardInfo({name, date, distance, size}) {
                 <div className="date">
                     <p>Расстояние</p>
                     <div className="line"></div>
-                    <p>{distance} км</p>
+                    <p>{displayDistance} км</p>
                 </div>
                 <div className="date">
                     <p>Размер</p>

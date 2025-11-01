@@ -1,5 +1,4 @@
-
-import { createRoot } from 'react-dom/client'
+import {createRoot} from 'react-dom/client'
 import './App.css'
 import {BrowserRouter} from "react-router";
 
@@ -10,7 +9,7 @@ import AsteroidData from "./AsteroidData.jsx";
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <Header/>
-            <AsteroidData/>
+        <AsteroidData/>
         <Footer/>
     </BrowserRouter>
 )
