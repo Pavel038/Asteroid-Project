@@ -9,7 +9,7 @@ import {DistanceContext, TasksContext} from "./TasksContext.js";
 
 export default function AsteroidData() {
 
-    const [state, dispatch] = useReducer(asteroidsReducer, {asteroidsData: [], destructionList: []})
+    const [state, dispatch] = useReducer(asteroidsReducer, {asteroidsData: [], destructionList: [],originalData:[]})
 
     const [distanceUnit, setDistanceUnit] = useReducer(distanceReducer, {  isKilometers: true,
         unit: 'KILOMETERS'});
@@ -27,13 +27,21 @@ export default function AsteroidData() {
     }, [])
 
     function asteroidsReducer(state, action) {
+
         switch (action.type) {
             case 'LOAD_ASTEROIDS':
-                return {...state, asteroidsData: action.payload}
+                return {...state, asteroidsData: action.payload, originalData: action.payload}
             case 'ADD_TO_DESTRUCTION_LIST':
                 return {...state, destructionList: [...state.destructionList, action.payload]};
             case 'REMOVE_FROM_DESTRUCTION_LIST':
                 return {...state, destructionList: action.payload};
+            case 'FILTER_HAZARDOUS_ASTEROIDS':{
+                return {...state, asteroidsData: [action.payload]};
+            }
+            case 'SHOW_ALL_ASTEROIDS':
+            {
+                return {...state, asteroidsData:state.originalData};
+            }
             default:
                 return state;
         }
@@ -42,7 +50,7 @@ export default function AsteroidData() {
 
     function distanceReducer(distanceUnit, action) {
         switch (action.type) {
-            case "SET_KILOMETERS":
+            case 'SET_KILOMETERS':
                 return {...distanceUnit, isKilometers: true, unit: 'KILOMETERS'};
             case "SET_LUNAR_ORBITS":
                 return {...distanceUnit, isKilometers: false, unit: 'LUNAR_ORBITS'};
