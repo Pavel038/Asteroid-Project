@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useReducer } from 'react'
-import AsteroidService from './AsteroidService.js'
+import AsteroidService from './AsteroidService.ts'
 import { Route, Routes } from 'react-router'
 import AsteroidsPage from './Pages/AsteroidsPage.jsx'
 import DestructionPage from './Pages/DestructionPage.jsx'

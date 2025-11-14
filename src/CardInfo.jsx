@@ -10,7 +10,7 @@ export default function CardInfo({
   distanceInLunarOrbits,
 }) {
   const { distanceUnit } = useContext(DistanceContext)
-
+console.log(distanceInLunarOrbits)
   const displayDistance = useMemo(() => {
     return distanceUnit.isKilometers ? distanceInKm : distanceInLunarOrbits
   }, [distanceUnit.isKilometers])
