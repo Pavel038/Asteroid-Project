@@ -1,12 +1,18 @@
-import CardInfo from '../CardInfo.jsx'
+import CardInfo from '../CardInfo.js'
 import AsteroidColumn from './AsteroidColumn.jsx'
 import EvaluationColumn from './EvaluationColumn.jsx'
-import React from 'react'
+import React, { type JSX } from 'react'
+import type { AsteroidInterface } from '../AsteroidInterface.js'
+
+interface AsteroidCardProps {
+  element: AsteroidInterface
+  showDestructionButton: boolean
+}
 
 export default function AsteroidCard({
   element,
   showDestructionButton = true,
-}) {
+}: AsteroidCardProps): JSX.Element {
   return (
     <>
       <div className="cart__container">

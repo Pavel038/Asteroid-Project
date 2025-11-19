@@ -1,11 +1,11 @@
- export interface RawAsteroid {
+export interface RawAsteroid {
   id: number
   name: string
   close_approach_data: {
     close_approach_date: string
     miss_distance: {
-      lunar: string,
-      kilometers:string
+      lunar: string
+      kilometers: string
     }
   }[]
   estimated_diameter: {
@@ -18,10 +18,9 @@
 }
 
 export interface AsteroidApiResponse {
-
-    near_earth_objects: {
-      [data: string]: RawAsteroid[]
-    }
+  near_earth_objects: {
+    [data: string]: RawAsteroid[]
+  }
 }
 
 export interface AsteroidInterface {
@@ -36,6 +35,3 @@ export interface AsteroidInterface {
   group: string
   lunar: number
 }
-
-
-

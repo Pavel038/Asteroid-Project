@@ -1,6 +1,6 @@
-import AsteroidCard from './AsteroidCard.jsx'
+import AsteroidCard from './AsteroidCard.tsx'
 import { useContext } from 'react'
-import { TasksContext } from '../TasksContext.js'
+import { TasksContext } from '../TasksContext.ts'
 import React from 'react'
 
 export default function MainBody() {

@@ -5,9 +5,13 @@ import group3 from '../assets/Group (2).svg'
 import vector from '../assets/Vector (1).svg'
 import vector2 from '../assets/Vector (2).svg'
 import vector3 from '../assets/Vector (3).svg'
-import React from 'react'
+import React, { type JSX } from 'react'
 
-export default function AsteroidColumn({ size }) {
+type Aster = {
+  size: number
+}
+
+export default function AsteroidColumn({ size }: Aster): JSX.Element {
   let asteroidAssets
   switch (true) {
     case size > 300:

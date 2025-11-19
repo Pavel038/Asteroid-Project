@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router'
 import AsteroidsPage from './Pages/AsteroidsPage.jsx'
 import DestructionPage from './Pages/DestructionPage.jsx'
 import App from './App.jsx'
-import { DistanceContext, TasksContext } from './TasksContext.js'
+import { DistanceContext, TasksContext } from './TasksContext.ts'
 import React from 'react'
 
 export default function AsteroidData() {

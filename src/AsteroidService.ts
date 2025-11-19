@@ -1,9 +1,6 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
-// @ts-ignore
 import dino from './assets/dino.svg'
-// @ts-ignore
 import group from './assets/Group.svg'
-// @ts-ignore
 import vector from './assets/Vector (1).svg'
 import type {
   AsteroidInterface,
@@ -29,7 +26,7 @@ class AsteroidService {
       }
       return this.mapDataAsteroid(asteroidList)
     } catch (error) {
-      console.log(error)
+        console.log(error)
       return []
     }
   }

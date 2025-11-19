@@ -1,5 +1,5 @@
-import AsteroidCard from '../Components/AsteroidCard.jsx'
-import FilterAsteroid from '../Components/FilterAsteroid.jsx'
+import AsteroidCard from '../Components/AsteroidCard.tsx'
+import FilterAsteroid from '../Components/FilterAsteroid.tsx'
 import React from 'react'
 
 export default function AsteroidsPage({ dataAsteroid }) {

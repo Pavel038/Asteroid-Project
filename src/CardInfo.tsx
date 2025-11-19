@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { DistanceContext } from './TasksContext.js'
+import { DistanceContext } from './TasksContext.ts'
 import React from 'react'
 
 export default function CardInfo({

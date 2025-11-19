@@ -1,24 +1,54 @@
-import { useContext, useState } from 'react'
+import { type JSX, useContext, useState } from 'react'
 import { DistanceContext, TasksContext } from '../TasksContext.js'
 import React from 'react'
+import type { AsteroidInterface } from '../AsteroidInterface.js'
 
-export default function FilterAsteroid() {
-  const { distanceUnit, setDistanceUnit } = useContext(DistanceContext)
+type DistanceContextType = {
+  distanceUnit: { isKilometers: boolean; unit: 'KILOMETERS' | 'LUNAR_ORBITS' }
+  setDistanceUnit: ({
+    type,
+  }: {
+    type: 'SET_KILOMETERS' | 'SET_LUNAR_ORBITS'
+  }) => void
+}
+
+type TasksContextType = {
+  asteroidsData: AsteroidInterface[][]
+  dispatch: (action: {
+    type: 'FILTER_HAZARDOUS_ASTEROIDS' | 'SHOW_ALL_ASTEROIDS'
+    payload?: AsteroidInterface[]
+  }) => void
+}
+
+export default function FilterAsteroid(): JSX.Element {
+  const distanceContext = useContext(DistanceContext)
+  const tasksContext = useContext(TasksContext)
+  if (!distanceContext) {
+    throw new Error('DistanceContext не доступен')
+  }
+
+  if (!tasksContext) {
+    throw new Error('TasksContext не доступен')
+  }
+
+  const { distanceUnit, setDistanceUnit } =
+    distanceContext as DistanceContextType
+
   const [isDangerousOnly, setIsDangerousOnly] = useState(false)
-  const { asteroidsData, dispatch } = useContext(TasksContext)
+  const { asteroidsData, dispatch }: TasksContextType = tasksContext
 
-  function handleHazardousFilterToggle() {
-    const newValue = !isDangerousOnly
+  function handleHazardousFilterToggle(): void {
+    const newValue: boolean = !isDangerousOnly
 
     if (newValue) {
-      const newElem = asteroidsData
+      const newElem: AsteroidInterface[] = asteroidsData
         .flat()
-        .filter((elem) => elem.hazardousAsteroid)
+        .filter((elem: AsteroidInterface): boolean => elem.hazardousAsteroid)
       dispatch({ type: 'FILTER_HAZARDOUS_ASTEROIDS', payload: newElem })
     } else {
       dispatch({ type: 'SHOW_ALL_ASTEROIDS' })
     }
-    setIsDangerousOnly((isDangerousOnly) => !isDangerousOnly)
+    setIsDangerousOnly((isDangerousOnly: boolean): boolean => !isDangerousOnly)
   }
 
   return (
