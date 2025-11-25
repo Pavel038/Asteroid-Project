@@ -1,6 +1,14 @@
 import { useContext, useMemo } from 'react'
-import { DistanceContext } from './TasksContext.ts'
+import { DistanceContext } from './TasksContext.js'
 import React from 'react'
+
+type CardInfo = {
+  name: string,
+  date:string,
+  distanceInKm: string,
+  size:number
+  distanceInLunarOrbits: number
+}
 
 export default function CardInfo({
   name,
@@ -8,9 +16,9 @@ export default function CardInfo({
   distanceInKm,
   size,
   distanceInLunarOrbits,
-}) {
+}:CardInfo) {
   const { distanceUnit } = useContext(DistanceContext)
-console.log(distanceInLunarOrbits)
+
   const displayDistance = useMemo(() => {
     return distanceUnit.isKilometers ? distanceInKm : distanceInLunarOrbits
   }, [distanceUnit.isKilometers])

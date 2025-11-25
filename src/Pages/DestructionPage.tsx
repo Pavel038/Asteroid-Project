@@ -1,5 +1,5 @@
-import MainBody from '../Components/MainBody.jsx'
-import FilterAsteroid from '../Components/FilterAsteroid.tsx'
+import MainBody from '../Components/MainBody.js'
+import FilterAsteroid from '../Components/FilterAsteroid.jsx'
 import React from 'react'
 
 export default function DestructionPage() {

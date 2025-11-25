@@ -1,4 +1,4 @@
 import { createContext } from 'react'
-
-export const TasksContext = createContext(null)
-export const DistanceContext = createContext(null)
+import type { DistanceContextType } from './AsteroidData.js'
+export const TasksContext = createContext<DistanceContextType | null>(null)
+export const DistanceContext = createContext<DistanceContextType | null>(null)

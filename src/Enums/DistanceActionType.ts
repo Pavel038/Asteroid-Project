@@ -1,0 +1,4 @@
+export enum DistanceActionType{
+  SET_KILOMETERS='SET_KILOMETERS',
+  SET_LUNAR_ORBITS ='SET_LUNAR_ORBITS'
+}

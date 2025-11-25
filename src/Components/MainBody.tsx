@@ -1,10 +1,12 @@
-import AsteroidCard from './AsteroidCard.tsx'
-import { useContext } from 'react'
-import { TasksContext } from '../TasksContext.ts'
+import AsteroidCard from './AsteroidCard.jsx'
+
 import React from 'react'
+import { useAppSelector } from '../hooks/hooks.js'
 
 export default function MainBody() {
-  const { destructionList } = useContext(TasksContext)
+  const destructionList = useAppSelector(
+    (state) => state.asteroidReducer.destructionList,
+  )
 
   return (
     <div className="main__container">

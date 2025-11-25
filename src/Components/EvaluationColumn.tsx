@@ -1,7 +1,10 @@
-import { type JSX, useContext } from 'react'
-import { TasksContext } from '../TasksContext.js'
+import { type JSX } from 'react'
+
 import React from 'react'
 import type { AsteroidInterface } from '../AsteroidInterface.js'
+import { useAppDispatch, useAppSelector } from '../hooks/hooks.js'
+import { addToList, deleteToList } from '../Slice/asteroidSlice.js'
+import { useGetAsteroidByNameQuery } from '../Asteroid.js'
 
 type EvaluationColumnProps = {
   showDestructionButton: boolean
@@ -9,45 +12,32 @@ type EvaluationColumnProps = {
   hazardousAsteroid: boolean
 }
 
-type TasksContextValue = {
-  asteroidsData: AsteroidInterface[][]
-  destructionList: AsteroidInterface[]
-  dispatch: (action: {
-    type: 'ADD_TO_DESTRUCTION_LIST' | 'REMOVE_FROM_DESTRUCTION_LIST'
-    payload: AsteroidInterface | AsteroidInterface[]
-  }) => void
-}
-
 function EvaluationColumn(props: EvaluationColumnProps): JSX.Element {
   const { showDestructionButton, asteroidId, hazardousAsteroid } = props
-  const context = useContext(TasksContext)
-  if (!context) {
-    throw new Error('Ошибка')
-  }
-  const { asteroidsData, destructionList, dispatch } =
-    context as TasksContextValue
-  const isInDestructionList: boolean = destructionList.some(
+
+  const { data: asteroidsData } = useGetAsteroidByNameQuery()
+
+  const dispatch = useAppDispatch()
+
+  const destructionList: AsteroidInterface[] = useAppSelector(
+    (state) => state.asteroidReducer.destructionList,
+  )
+
+  const isInDestructionList = destructionList.some(
     (elem: AsteroidInterface): boolean => elem.id === asteroidId,
   )
+
   function onDestruction(): void {
-    if (!isInDestructionList) {
+    if (!isInDestructionList && asteroidsData) {
       const allAsteroids: AsteroidInterface[] = asteroidsData.flat()
       const asteroidToMove: AsteroidInterface | undefined = allAsteroids.find(
         (elem: AsteroidInterface): boolean => elem.id === asteroidId,
       )
-
       if (asteroidToMove) {
-        dispatch({ type: 'ADD_TO_DESTRUCTION_LIST', payload: asteroidToMove })
+        dispatch(addToList(asteroidToMove))
       }
     } else {
-      const updatedDestructionList: AsteroidInterface[] =
-        destructionList.filter(
-          (element: AsteroidInterface): boolean => element.id !== asteroidId,
-        )
-      dispatch({
-        type: 'REMOVE_FROM_DESTRUCTION_LIST',
-        payload: updatedDestructionList,
-      })
+      dispatch(deleteToList(asteroidId))
     }
   }
 
