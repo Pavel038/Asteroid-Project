@@ -13,9 +13,9 @@ export const asteroidApi = createApi({
     baseUrl: 'https://jsonplaceholder.typicode.com',
   }),
   endpoints: (builder) => ({
-    getAsteroidByName: builder.query<AsteroidInterface[][], void>({
+    getAllAsteroid: builder.query<AsteroidInterface[], void>({
       query: () => '/todos',
-      transformResponse(resp: AsteroidApiResponse): AsteroidInterface[][] {
+      transformResponse(resp: AsteroidApiResponse): AsteroidInterface[] {
         const rawAsteroidsByDate: { [data: string]: RawAsteroid[] } =
           resp.near_earth_objects
 
@@ -26,4 +26,4 @@ export const asteroidApi = createApi({
     }),
   }),
 })
-export const { useGetAsteroidByNameQuery } = asteroidApi
+export const { useGetAllAsteroidQuery } = asteroidApi

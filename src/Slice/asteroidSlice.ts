@@ -4,27 +4,41 @@ import type { AsteroidInterface } from '../AsteroidInterface.js'
 
 export interface AsteroidState {
   destructionList: AsteroidInterface[]
-  distroy: AsteroidInterface[]
+  hazardousOnlyList: AsteroidInterface[]
+  showHazardousOnly: boolean
+  distanceKm: boolean
 }
 
 const initialState: AsteroidState = {
   destructionList: [],
-  distroy: [],
+  hazardousOnlyList: [],
+  showHazardousOnly: false,
+  distanceKm: true,
 }
 
 export const asteroidSlice = createSlice({
   name: 'asteroid',
   initialState,
   reducers: {
-    addToList: (state, action: PayloadAction<AsteroidInterface>) => {
+    addToList: (state, action: PayloadAction<AsteroidInterface>): void => {
       state.destructionList.push(action.payload)
     },
-    deleteToList: (state, action: PayloadAction<number>) => {
+    deleteFromList: (state, action: PayloadAction<number>): void => {
       state.destructionList = state.destructionList.filter(
-        (element) => element.id !== action.payload,
+        (element): boolean => element.id !== action.payload,
       )
+    },
+    setHazardousOnly: (state, action: PayloadAction<boolean>): void => {
+      state.showHazardousOnly = action.payload
+    },
+    setHazardousList: (state, action: PayloadAction<AsteroidInterface[]>): void => {
+      state.hazardousOnlyList = action.payload
+    },
+    setDistanceMode: (state, action: PayloadAction<boolean>): void => {
+      state.distanceKm = action.payload
     },
   },
 })
-export const { addToList, deleteToList } = asteroidSlice.actions
+export const { addToList, deleteFromList, setHazardousOnly, setDistanceMode } =
+  asteroidSlice.actions
 export default asteroidSlice.reducer

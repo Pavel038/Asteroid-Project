@@ -3,8 +3,8 @@ import { type JSX } from 'react'
 import React from 'react'
 import type { AsteroidInterface } from '../AsteroidInterface.js'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks.js'
-import { addToList, deleteToList } from '../Slice/asteroidSlice.js'
-import { useGetAsteroidByNameQuery } from '../Asteroid.js'
+import { addToList, deleteFromList } from '../Slice/asteroidSlice.js'
+import { useGetAllAsteroidQuery } from '../Asteroid.js'
 
 type EvaluationColumnProps = {
   showDestructionButton: boolean
@@ -15,7 +15,7 @@ type EvaluationColumnProps = {
 function EvaluationColumn(props: EvaluationColumnProps): JSX.Element {
   const { showDestructionButton, asteroidId, hazardousAsteroid } = props
 
-  const { data: asteroidsData } = useGetAsteroidByNameQuery()
+  const { data: asteroidsData } = useGetAllAsteroidQuery()
 
   const dispatch = useAppDispatch()
 
@@ -23,21 +23,20 @@ function EvaluationColumn(props: EvaluationColumnProps): JSX.Element {
     (state) => state.asteroidReducer.destructionList,
   )
 
-  const isInDestructionList = destructionList.some(
+  const isInDestructionList: boolean = destructionList.some(
     (elem: AsteroidInterface): boolean => elem.id === asteroidId,
   )
 
   function onDestruction(): void {
     if (!isInDestructionList && asteroidsData) {
-      const allAsteroids: AsteroidInterface[] = asteroidsData.flat()
-      const asteroidToMove: AsteroidInterface | undefined = allAsteroids.find(
+      const asteroidToMove: AsteroidInterface | undefined = asteroidsData.find(
         (elem: AsteroidInterface): boolean => elem.id === asteroidId,
       )
       if (asteroidToMove) {
         dispatch(addToList(asteroidToMove))
       }
     } else {
-      dispatch(deleteToList(asteroidId))
+      dispatch(deleteFromList(asteroidId))
     }
   }
 
@@ -50,7 +49,7 @@ function EvaluationColumn(props: EvaluationColumnProps): JSX.Element {
         </p>
       </div>
       {showDestructionButton && (
-        <button onClick={onDestruction}>
+        <button onClick={onDestruction} style={{ cursor: 'pointer' }}>
           {isInDestructionList ? 'Не уничтожать' : 'На уничтожение'}
         </button>
       )}

@@ -1,27 +1,16 @@
-import { useContext, useMemo } from 'react'
-import { DistanceContext } from './TasksContext.js'
 import React from 'react'
+import { useAppSelector } from './hooks/hooks.js'
 
 type CardInfo = {
-  name: string,
-  date:string,
-  distanceInKm: string,
-  size:number
+  name: string
+  date: string
+  distanceInKm: string
+  size: number
   distanceInLunarOrbits: number
 }
 
-export default function CardInfo({
-  name,
-  date,
-  distanceInKm,
-  size,
-  distanceInLunarOrbits,
-}:CardInfo) {
-  const { distanceUnit } = useContext(DistanceContext)
-
-  const displayDistance = useMemo(() => {
-    return distanceUnit.isKilometers ? distanceInKm : distanceInLunarOrbits
-  }, [distanceUnit.isKilometers])
+export default function CardInfo({ name, date, size, distanceInKm, distanceInLunarOrbits }: CardInfo) {
+  const {distanceKm}= useAppSelector(state => state.asteroidReducer)
 
   return (
     <>
@@ -40,7 +29,7 @@ export default function CardInfo({
         <div className="date">
           <p>Расстояние</p>
           <div className="line"></div>
-          <p>{displayDistance} км</p>
+          <p>{distanceKm?`${distanceInKm} км`:`${distanceInLunarOrbits} м`}</p>
         </div>
         <div className="date">
           <p>Размер</p>
