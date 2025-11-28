@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { asteroidApi } from '../Asteroid.js'
 import asteroidReducer from '../Slice/asteroidSlice.js'
+import { logger } from '../middleware/logger.js'
 
 export const store = configureStore({
   reducer: {
@@ -9,7 +10,7 @@ export const store = configureStore({
     [asteroidApi.reducerPath]: asteroidApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(asteroidApi.middleware),
+    getDefaultMiddleware().concat(asteroidApi.middleware).concat(logger),
 })
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
