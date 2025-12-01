@@ -1,6 +1,6 @@
 import AsteroidCard from './AsteroidCard.jsx'
 
-import React, { type JSX } from 'react'
+import React, { type JSX, useMemo } from 'react'
 import { useAppSelector } from '../hooks/hooks.js'
 import type { AsteroidInterface } from '../AsteroidInterface.js'
 
@@ -14,6 +14,7 @@ export default function MainBody(): JSX.Element {
         (element: AsteroidInterface): boolean => element.hazardousAsteroid,
       )
     : destructionList
+
   return (
     <div className="main__container">
       {list.map(
