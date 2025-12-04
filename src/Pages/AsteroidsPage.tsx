@@ -7,10 +7,9 @@ import { type JSX, useMemo } from 'react'
 
 export default function AsteroidsPage(): JSX.Element {
   const { data = [], isLoading } = useGetAllAsteroidQuery()
-  console.log('LOADER', isLoading)
+
   const { showHazardousOnly } = useAppSelector((state) => state.asteroidReducer)
   const list: AsteroidInterface[] = useMemo((): AsteroidInterface[] => {
-    console.log('rivet')
     return showHazardousOnly
       ? data.filter(
           (asteroids: AsteroidInterface): boolean =>
@@ -18,7 +17,7 @@ export default function AsteroidsPage(): JSX.Element {
         )
       : data
   }, [showHazardousOnly, data])
-  console.log('######', list)
+
   return isLoading ? (
     <h3>LOADING...</h3>
   ) : (

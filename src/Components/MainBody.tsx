@@ -9,15 +9,19 @@ export default function MainBody(): JSX.Element {
     (state) => state.asteroidReducer,
   )
 
-  const list: AsteroidInterface[] = showHazardousOnly
-    ? destructionList.filter(
-        (element: AsteroidInterface): boolean => element.hazardousAsteroid,
-      )
-    : destructionList
+  const list: AsteroidInterface[] | undefined = useMemo(():
+    | AsteroidInterface[]
+    | undefined => {
+    return showHazardousOnly
+      ? destructionList.filter(
+          (element: AsteroidInterface): boolean => element.hazardousAsteroid,
+        )
+      : destructionList
+  }, [destructionList, showHazardousOnly])
 
   return (
     <div className="main__container">
-      {list.map(
+      {list?.map(
         (destruction: AsteroidInterface): JSX.Element => (
           <AsteroidCard
             key={destruction.id}
