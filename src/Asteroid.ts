@@ -10,11 +10,11 @@ import mapDataAsteroid from './mapDataAsteroid.js'
 export const asteroidApi = createApi({
   reducerPath: 'asteroidApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://jsonplaceholder.typicode.com',
+    baseUrl: 'https://neows-proxy.vercel.app/api/',
   }),
   endpoints: (builder) => ({
     getAllAsteroid: builder.query<AsteroidInterface[], void>({
-      query: () => '/todos',
+      query: () => '/asteroids',
       transformResponse(resp: AsteroidApiResponse): AsteroidInterface[] {
         const rawAsteroidsByDate: { [data: string]: RawAsteroid[] } =
           resp.near_earth_objects

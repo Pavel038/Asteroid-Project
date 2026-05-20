@@ -6,7 +6,7 @@ import { useAppSelector } from '../hooks/hooks.js'
 import { type JSX, useMemo } from 'react'
 
 export default function AsteroidsPage(): JSX.Element {
-  const { data = [], isLoading } = useGetAllAsteroidQuery()
+  const { data = [], isLoading, } = useGetAllAsteroidQuery(undefined)
 
   const { showHazardousOnly } = useAppSelector((state) => state.asteroidReducer)
   const list: AsteroidInterface[] = useMemo((): AsteroidInterface[] => {
